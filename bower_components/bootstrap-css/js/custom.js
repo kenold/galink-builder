@@ -27,19 +27,17 @@ function generate() {
 	var cname = document.getElementById("cname").value;
 
 	var holder = document.getElementById("result");
-
-	/*if (res == "/") {*/
 		
-		if (term.length == 0) {
-			holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
-				+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
-		} else if (content.length == 0) {
-			holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
-				+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	 
-		} else {		
-			holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
-				+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
-		}
+	if (term.length == 0) {
+		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+			+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
+	} else if (content.length == 0) {
+		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+			+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	 
+	} else {		
+		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+			+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
+	}
 
 }
 
