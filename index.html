@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Google Analytics Campaign Link Builder</title>
+        <meta name="description" content="Analytics link builder">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-css/css/bootstrap.min.css">        
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-css/css/custom.css">
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->        
+
+        <div class="container">
+        	<div class="row">
+        		<h1>URL Builder Form</h1>
+        	</div>        
+
+	        <div class="row">
+	        	<div class="col-md-6">
+		        	<form method="POST" name="frm-generate" onsubmit="return false" class="form-horizontal">
+
+		        		<p class="col-sm-offset-4 col-sm-8">
+		        			<span class="label label-info">Step 1:</span> Enter the URL of your website
+	        			</p>
+
+		        		<div class="form-group">
+			        		<label for="url" class="star col-sm-4 control-label">Website URL</label>
+			        		<div class="col-sm-8">
+				        		<input type="url" name="url" class="form-control" id="url">
+				        		<span id="helpBlock" class="help-block">(e.g. http://www.urchin.com/download.html)</span>
+			        		</div>
+		        		</div>
+
+		        		<p class="col-sm-offset-4 col-sm-8">
+		        			<span class="label label-info">Step 2:</span> Fill in the fields below. Campaign Source, Campaign Medium and Campaign Name should always be used.
+						</p>
+
+		        		<div class="form-group">
+			        		<label for="source" class="star col-sm-4 control-label">Campaign Source</label>
+			        		<div class="col-sm-8">
+				        		<input type="text" name="source" class="form-control" id="source">
+				        		<span id="helpBlock" class="help-block">(referrer: google, citysearch, newsletter4)</span>
+			        		</div>
+		        		</div>
+
+		        		<div class="form-group">
+			        		<label for="medium" class="star col-sm-4 control-label">Campaign Medium</label>
+			        		 <div class="col-sm-8">
+			        			<input type="text" name="medium" class="form-control" id="medium">		        			
+			        			<span id="helpBlock" class="help-block">(marketing medium: cpc, banner, email)</span>			        			
+		        			</div>
+		        		</div>
+
+		        		<div class="form-group">
+			        		<label for="term" class="col-sm-4 control-label">Campaign Term</label>
+			        		<div class="col-sm-8">
+				        		<input type="text" name="term" class="form-control" id="term">
+				        		<span id="helpBlock" class="help-block">(identify the paid keywords)</span>
+			        		</div>
+		        		</div>
+
+		        		<div class="form-group">
+			        		<label for="content" class="col-sm-4 control-label">Campaign Content</label>
+			        		<div class="col-sm-8">
+				        		<input type="text" name="content" class="form-control" id="content">
+				        		<span id="helpBlock" class="help-block">(use to differentiate ads)</span>
+			        		</div>
+		        		</div>
+
+		        		<div class="form-group">
+			        		<label for="name" class="star col-sm-4 control-label">Campaign Name</label>
+			        		<div class="col-sm-8">
+				        		<input type="text" name="name" class="form-control" id="name">
+				        		<span id="helpBlock" class="help-block">(product, promo code, or slogan)</span>
+			        		</div>
+		        		</div>
+
+		        		<div class="form-group">
+		        			<div class="col-sm-offset-4 col-sm-8">
+		        				<button type="button" onclick="generate()" class="btn btn-primary">Generate URL</button>
+	        				</div>
+		        		</div>
+
+		        		<p id="result"></p>
+
+		        		<div>Created by Kenold Beauplan. I assume no liability for use of this tool.  Use at your own risk.  </div>
+
+		        	</form>
+	        	</div>
+	        </div>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+        <script type="text/javascript" src="bower_components/bootstrap-css/js/custom.js"></script>        
+        
+    </body>
+</html>
