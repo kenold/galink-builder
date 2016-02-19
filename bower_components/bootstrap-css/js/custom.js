@@ -16,31 +16,30 @@ for (i = 0; i < st.length; i++) {
 
 function generate() {
 
-	var urlValue = document.getElementById("url").value;
-	var ln = urlValue.length; // get URL value length
-	var res = urlValue.charAt(ln-1); // get the last character from URL
+	var url = document.getElementById("url").value;
+	var ln = url.length; // get URL value length
+	var res = url.charAt(ln-1); // get the last character from URL
 
-	var sourceValue = document.getElementById("source").value;
-	var mediumValue = document.getElementById("medium").value;
-	var termValue = document.getElementById("term").value;
-	var contentValue = document.getElementById("content").value;
-	var nameValue = document.getElementById("name").value;
+	var source = document.getElementById("source").value;
+	var medium = document.getElementById("medium").value;
+	var term = document.getElementById("term").value;
+	var content = document.getElementById("content").value;
+	var cname = document.getElementById("cname").value;
 
 	var holder = document.getElementById("result");
 
 	/*if (res == "/") {*/
-		if (termValue.length != 0 && contentValue.length != 0) {
-			holder.innerHTML = urlValue + "?utm_source=" + sourceValue + "&utm_medium=" 
-				+ mediumValue + "&utm_term=" + termValue + "&utm_content=" + contentValue + "&utm_campaign=" + nameValue;
+		
+		if (term.length == 0) {
+			holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+				+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
+		} else if (content.length == 0) {
+			holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+				+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	 
+		} else {		
+			holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+				+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
 		}
-	 
-
-	/*} else if (res == "/" && termValue.length == 0 && contentValue.length == 0) {
-		holder.innerHTML = urlValue + "?utm_source=" + sourceValue + "&utm_medium=" + mediumValue + "&utm_campaign=" + nameValue;
-	}*/ else {
-		/*holder.innerHTML = urlValue + "/?utm_source=" + sourceValue + "&utm_medium=" + mediumValue + "&utm_term=" + termValue + "&utm_content=" + contentValue + "&utm_campaign=" + nameValue;*/
-		holder.innerHTML = urlValue + "?utm_source=" + sourceValue + "&utm_medium=" + mediumValue + "&utm_campaign=" + nameValue;
-	}
 
 }
 
