@@ -5,3 +5,27 @@
 	color: 757575;
 	line-height: 16px;
 }
+
+#generated {
+	border: 1px solid #CCC;
+	padding: 15px;
+	background-color: #EEE;
+	text-align: center;
+}
+
+p#result {
+	margin: 0;
+}
+
+.footer {
+	text-align: center;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	margin-top: 20px;
+	border-top: 1px solid #eee;
+}
+
+header {
+	background-color: #EEE;
+	margin-bottom: 40px;
+}
