@@ -4,23 +4,47 @@
 * Follow me on Twitter @kenoldb
 */
 
+// form validation
+$(function() { 
+		$("#frm-generate").validate({
+			rules: {
+					website: {
+						required: true,
+						url: true
+					}
+			},
+			messages: {
+				website: "Please enter a valid website URL"
+			},
+			submitHandler: function(form) {
+                form.submit();
+            }
+		});
+
+		
+});
+// end form validation
+
+/* 
+* URL builder function 
+*/
+
 // add an asterite after each required label
 var st = document.getElementsByClassName("star");
-var i;
 
-for (i = 0; i < st.length; i++) {
+for (var i = 0; i < st.length; i++) {
 	st[i].innerHTML += " *";
 }
 
 // get the field value
 
-function generate() {
+function generate() {	
 
 	var showUrl = document.getElementById("generated");
 
-	var url = document.getElementById("url").value;
-	var ln = url.length; // get URL value length
-	var res = url.charAt(ln-1); // get the last character from URL
+	var website = document.getElementById("website").value;
+	var ln = website.length; // get URL value length
+	var res = website.charAt(ln-1); // get the last character from URL
 
 	var source = document.getElementById("source").value;
 	var medium = document.getElementById("medium").value;
@@ -34,13 +58,13 @@ function generate() {
 	showUrl.removeAttribute("class");
 		
 	if (term.length == 0) {		
-		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
 	} else if (content.length == 0) {
-		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	 
 	} else {		
-		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
+		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
 	}
 
