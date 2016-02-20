@@ -16,6 +16,8 @@ for (i = 0; i < st.length; i++) {
 
 function generate() {
 
+	var showUrl = document.getElementById("generated");
+
 	var url = document.getElementById("url").value;
 	var ln = url.length; // get URL value length
 	var res = url.charAt(ln-1); // get the last character from URL
@@ -27,8 +29,11 @@ function generate() {
 	var cname = document.getElementById("cname").value;
 
 	var holder = document.getElementById("result");
+
+	// remove hide class
+	showUrl.removeAttribute("class");
 		
-	if (term.length == 0) {
+	if (term.length == 0) {		
 		holder.innerHTML = url + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
 	} else if (content.length == 0) {
