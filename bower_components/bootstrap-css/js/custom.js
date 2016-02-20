@@ -4,39 +4,58 @@
 * Follow me on Twitter @kenoldb
 */
 
-// form validation
+/* ********************************************************* 
+* Form validation
+* Validate website URL, campaign source, medium and name
+* All three must not be empty
+********************************************************** */
+
 $(function() { 
-		$("#frm-generate").validate({
-			rules: {
-					website: {
-						required: true,
-						url: true
-					}
+	$("#frm-generate").validate({
+		rules: {
+				website: {
+					required: true,
+					url: true
+				},
+				source: {
+					required: true
+				},
+				medium: {
+					required: true
+				},
+				cname: {
+					required: true
+				}
+		},
+		messages: {
+			website: { 
+				required: "Website URL cannot be blank",
+				url: "Please enter a valid website URL"
 			},
-			messages: {
-				website: "Please enter a valid website URL"
-			},
-			submitHandler: function(form) {
-                form.submit();
-            }
-		});
-
+			source: "Campaign Source is required",
+			medium: "Campaign Medium is required",
+			cname: "Campaign name is required"
+		},
+		submitHandler: function(form) {
+			generate();
+			return false;
+            form.submit();
+        }
+	});
 		
-});
-// end form validation
+}); // end form validation
 
-/* 
-* URL builder function 
-*/
 
-// add an asterite after each required label
+// add an asterisk after each required label with a class 'star'
 var st = document.getElementsByClassName("star");
 
 for (var i = 0; i < st.length; i++) {
 	st[i].innerHTML += " *";
 }
 
-// get the field value
+/* ********************************************************* 
+* URL builder function 
+********************************************************* */
 
 function generate() {	
 
@@ -56,7 +75,8 @@ function generate() {
 
 	// remove hide class
 	showUrl.removeAttribute("class");
-		
+	
+	// remove campaign term or campaign content from generated URL if empty
 	if (term.length == 0) {		
 		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
