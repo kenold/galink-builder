@@ -11,6 +11,21 @@
 ********************************************************** */
 
 $(function() { 
+
+	$.validator.setDefaults({
+		errorClass: 'help-block',
+		highlight: function(element) {
+			$(element)
+				.closest('.form-group')
+				.addClass('has-error');
+		},
+		unhighlight: function(element) {
+			$(element)
+			.closest('.form-group')
+			.removeClass('has-error');
+		}
+	});
+
 	$("#frm-generate").validate({
 		rules: {
 				website: {
@@ -50,10 +65,10 @@ $(function() {
 
 
 // add an asterisk after each required label with a class 'star'
-var st = document.getElementsByClassName("star");
+var labelText = document.getElementsByClassName("star");
 
-for (var i = 0; i < st.length; i++) {
-	st[i].innerHTML += " *";
+for (var i = 0; i < labelText.length; i++) {
+	labelText[i].innerHTML += " *";
 }
 
 /* ********************************************************* 
@@ -62,6 +77,7 @@ for (var i = 0; i < st.length; i++) {
 
 function generate() {	
 
+	// get the url generated div
 	var showUrl = document.getElementById("generated");
 
 	var website = document.getElementById("website").value;
@@ -82,12 +98,15 @@ function generate() {
 	showUrl.removeAttribute("class");
 	
 	// remove campaign term or campaign content from generated URL if empty
-	if (term.length == 0) {		
+	if (term.length == 0 && content.length == 0) {		
+		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
+			+ medium + "&utm_campaign=" + cname;
+	} else if (term.length == 0) {
 		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
 	} else if (content.length == 0) {
 		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
-			+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	 
+			+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	
 	} else {		
 		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
 			+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
