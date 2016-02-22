@@ -81,6 +81,8 @@ function generate() {
 	var showUrl = document.getElementById("generated");
 
 	var website = document.getElementById("website").value;
+	
+	// check if URL has a slash at the end
 	var ln = website.length; // get URL value length
 	var res = website.charAt(ln-1); // get the last character from URL
 
@@ -112,5 +114,5 @@ function generate() {
 			+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
 	}
 
-}
+} // end generate function
 
