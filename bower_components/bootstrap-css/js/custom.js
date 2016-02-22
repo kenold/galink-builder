@@ -80,18 +80,23 @@ function generate() {
 	// get the url generated div
 	var showUrl = document.getElementById("generated");
 
-	var website = document.getElementById("website").value;
+	//var website = document.getElementById("website").value;
 	
 	// check if URL has a slash at the end
-	var ln = website.length; // get URL value length
-	var res = website.charAt(ln-1); // get the last character from URL
+	//var ln = website.length; // get URL value length
+	//var res = website.charAt(ln-1); // get the last character from URL
 
-	// get the values of the fields below
-	var source = document.getElementById("source").value;
-	var medium = document.getElementById("medium").value;
-	var term = document.getElementById("term").value;
-	var content = document.getElementById("content").value;
-	var cname = document.getElementById("cname").value;
+	
+	// object to store results
+	var inp = {};
+	// get all input elemets
+	var elements = document.getElementsByTagName("input");
+
+	for (var i in elements) {
+	  // adding new property to object
+	  // accessing values later with inp.term for ex.
+	    inp[elements[i].name]= elements[i].value;
+	}
 
 	// get the div with ID 'result'
 	var holder = document.getElementById("result");
@@ -100,18 +105,19 @@ function generate() {
 	showUrl.removeAttribute("class");
 	
 	// remove campaign term or campaign content from generated URL if empty
-	if (term.length == 0 && content.length == 0) {		
-		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
-			+ medium + "&utm_campaign=" + cname;
-	} else if (term.length == 0) {
-		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
-			+ medium + "&utm_content=" + content + "&utm_campaign=" + cname;
-	} else if (content.length == 0) {
-		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
-			+ medium + "&utm_term=" + term + "&utm_campaign=" + cname;	
+	if (inp.term.length == 0 && inp.content.length == 0) {		
+		holder.innerHTML = inp.website + "?utm_source=" + inp.source + "&utm_medium=" 
+			+ inp.medium + "&utm_campaign=" + inp.cname;
+	} else if (inp.term.length == 0) {
+		holder.innerHTML = inp.website + "?utm_source=" + inp.source + "&utm_medium=" 
+			+ inp.medium + "&utm_content=" + inp.content + "&utm_campaign=" + inp.cname;
+	} else if (inp.content.length == 0) {
+		holder.innerHTML = inp.website + "?utm_source=" + inp.source + "&utm_medium=" 
+			+ inp.medium + "&utm_term=" + inp.term + "&utm_campaign=" + inp.cname;	
 	} else {		
-		holder.innerHTML = website + "?utm_source=" + source + "&utm_medium=" 
-			+ medium + "&utm_term=" + term + "&utm_content=" + content + "&utm_campaign=" + cname;
+		holder.innerHTML = inp.website + "?utm_source=" + inp.source + "&utm_medium=" 
+			+ inp.medium + "&utm_term=" + inp.term + "&utm_content=" + inp.content 
+			+ "&utm_campaign=" + inp.cname;
 	}
 
 } // end generate function
