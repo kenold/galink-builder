@@ -2,8 +2,10 @@
 * Twitter @kenoldb
 */
 
+@import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+
 h1 {
-	font-family: Helvetica,Arial,sans-serif;
+	font-family: 'Antic Slab', Helvetica, Arial, sans-serif;
 }
 
 .help-block {
